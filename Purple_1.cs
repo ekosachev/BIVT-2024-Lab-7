@@ -1,4 +1,4 @@
-namespace Lab_6
+namespace Lab_7
 {
     public class Purple_1
     {
