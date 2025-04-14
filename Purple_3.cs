@@ -141,7 +141,7 @@ namespace Lab_7
             }
         }
 
-        public abstract class Scating
+        public abstract class Skating
         {
             private Participant[] _participants;
             protected double[] _judgeMood;
@@ -171,7 +171,7 @@ namespace Lab_7
                 }
             }
 
-            public Scating(double[] judgeMood)
+            public Skating(double[] judgeMood)
             {
                 _participants = new Participant[0];
                 _judgeMood = new double[0];
@@ -231,9 +231,9 @@ namespace Lab_7
             }
         }
 
-        public class FigureScating : Scating
+        public class FigureSkating : Skating
         {
-            public FigureScating(double[] judgeMood)
+            public FigureSkating(double[] judgeMood)
                 : base(judgeMood) { }
 
             protected override void ModificateMood()
@@ -248,9 +248,9 @@ namespace Lab_7
             }
         }
 
-        public class IceScating : Scating
+        public class IceSkating : Skating
         {
-            public IceScating(double[] judgeMood)
+            public IceSkating(double[] judgeMood)
                 : base(judgeMood) { }
 
             protected override void ModificateMood()
