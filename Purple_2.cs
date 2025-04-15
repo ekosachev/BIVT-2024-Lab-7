@@ -31,7 +31,7 @@ namespace Lab_7
             {
                 get
                 {
-                    if (this.Marks == null)
+                    if (this.Marks == null || !_hasJumped)
                         return 0;
                     int stylePoints = 0;
                     int bestMark = int.MinValue;
@@ -51,7 +51,7 @@ namespace Lab_7
                     stylePoints -= worstMark;
                     stylePoints -= bestMark;
 
-                    int distancePoints = int.Max(0, 60 + 2 * (Distance - _target));
+                    int distancePoints = Distance >= _target ? 60 : 0;
 
                     return stylePoints + distancePoints;
                 }
@@ -81,6 +81,8 @@ namespace Lab_7
 
                 if (distance < 0)
                     return;
+                if (target < 0)
+                    return;
 
                 this._distance = distance;
                 this._hasJumped = true;
@@ -109,17 +111,7 @@ namespace Lab_7
 
             public string Name => _name;
             public int Standard => _distance;
-            public Participant[] Participants
-            {
-                get
-                {
-                    if (_participants == null)
-                        return default;
-                    Participant[] copy = new Participant[_participants.Length];
-                    Array.Copy(_participants, copy, _participants.Length);
-                    return copy;
-                }
-            }
+            public Participant[] Participants => _participants;
 
             public SkiJumping(string name, int distance)
             {

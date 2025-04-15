@@ -235,6 +235,8 @@ namespace Lab_7
                     newArray[iTotal++] = men[i1++];
                 while (i2 < women.Length)
                     newArray[iTotal++] = women[i2++];
+
+                _sportsmen = newArray;
             }
         }
     }

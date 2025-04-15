@@ -177,10 +177,10 @@ namespace Lab_7
                 _judgeMood = new double[0];
                 if (judgeMood == null)
                     return;
-                if (judgeMood.Length != 7)
+                if (judgeMood.Length < 7)
                     return;
                 Array.Resize(ref _judgeMood, judgeMood.Length);
-                Array.Copy(judgeMood, _judgeMood, judgeMood.Length);
+                Array.Copy(judgeMood, _judgeMood, 7);
 
                 ModificateMood();
             }
@@ -191,7 +191,7 @@ namespace Lab_7
             {
                 if (marks == null)
                     return;
-                if (marks.Length != 7)
+                if (marks.Length < 7)
                     return;
 
                 if (_participants == null || _judgeMood == null)
@@ -205,9 +205,9 @@ namespace Lab_7
                     .Select(t => t.First * t.Second)
                     .ToArray();
 
-                foreach (var mark in marks)
+                for (int i = 0; i < 7; i++)
                 {
-                    _participants.First(p => !p._scoresFilled).Evaluate(mark);
+                    _participants.First(p => !p._scoresFilled).Evaluate(marks[i]);
                 }
             }
 
