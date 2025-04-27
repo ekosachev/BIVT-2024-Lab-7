@@ -76,7 +76,7 @@ namespace Lab_7
                     return;
                 if (this.Marks == null)
                     return;
-                if (marks.Length != 5)
+                if (marks.Length < 5)
                     return;
 
                 if (distance < 0)

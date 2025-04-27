@@ -236,7 +236,7 @@ namespace Lab_7
                 while (i2 < women.Length)
                     newArray[iTotal++] = women[i2++];
 
-                _sportsmen = newArray;
+                Array.Copy(newArray, this._sportsmen, newArray.Length);
             }
         }
     }

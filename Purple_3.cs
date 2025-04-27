@@ -260,7 +260,7 @@ namespace Lab_7
 
                 for (int i = 0; i < _judgeMood.Length; i++)
                 {
-                    _judgeMood[i] *= 1.0 + (double)i + 0.01;
+                    _judgeMood[i] *= 1.0 + (double)i / 100.0 + 0.01;
                 }
             }
         }
