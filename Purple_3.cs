@@ -153,9 +153,7 @@ namespace Lab_7
                     if (_participants == null)
                         return default;
 
-                    Participant[] copy = new Participant[_participants.Length];
-                    Array.Copy(_participants, copy, _participants.Length);
-                    return copy;
+                    return _participants;
                 }
             }
 
@@ -174,13 +172,10 @@ namespace Lab_7
             public Skating(double[] judgeMood)
             {
                 _participants = new Participant[0];
-                _judgeMood = new double[0];
+                _judgeMood = new double[7];
                 if (judgeMood == null)
                     return;
-                if (judgeMood.Length < 7)
-                    return;
-                Array.Resize(ref _judgeMood, judgeMood.Length);
-                Array.Copy(judgeMood, _judgeMood, 7);
+                Array.Copy(judgeMood, _judgeMood, int.Min(judgeMood.Length, 7));
 
                 ModificateMood();
             }
@@ -190,8 +185,6 @@ namespace Lab_7
             public void Evaluate(double[] marks)
             {
                 if (marks == null)
-                    return;
-                if (marks.Length < 7)
                     return;
 
                 if (_participants == null || _judgeMood == null)

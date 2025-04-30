@@ -137,10 +137,6 @@ namespace Lab_7
             {
                 if (this.Sportsmen == null)
                     return;
-                if (this.Sportsmen.Length < 2)
-                    return;
-                if (this.Sportsmen.Any(s => !s.TimeRecorded))
-                    return;
 
                 Sportsman[] sorted = this.Sportsmen.OrderBy(s => s.Time).ToArray();
                 Array.Copy(sorted, this._sportsmen, sorted.Length);
