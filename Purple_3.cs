@@ -67,7 +67,7 @@ namespace Lab_7
                 if (result < 0.0 || result > 6.0)
                     return;
                 if (this._marks == null)
-                    this._marks = new double[7];
+                    return;
                 this._marks[this._scoresRecorded++] = result;
                 if (this._scoresRecorded >= 7)
                     this._scoresFilled = true;
@@ -200,7 +200,7 @@ namespace Lab_7
 
                 for (int i = 0; i < 7; i++)
                 {
-                    _participants.First(p => !p._scoresFilled).Evaluate(marks[i]);
+                    _participants.First(p => !p._scoresFilled).Evaluate(finalMarks[i]);
                 }
             }
 

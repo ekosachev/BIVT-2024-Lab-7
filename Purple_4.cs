@@ -135,11 +135,7 @@ namespace Lab_7
 
             public void Sort()
             {
-                if (this.Sportsmen == null)
-                    return;
-
-                Sportsman[] sorted = this.Sportsmen.OrderBy(s => s.Time).ToArray();
-                Array.Copy(sorted, this._sportsmen, sorted.Length);
+                Sportsman.Sort(_sportsmen);
             }
 
             public static Group Merge(Group group1, Group group2)
