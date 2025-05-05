@@ -135,7 +135,9 @@ namespace Lab_7
 
             public void Sort()
             {
-                Sportsman.Sort(_sportsmen);
+                if (_sportsmen == null) return;
+                Sportsman[] sorted = _sportsmen.OrderBy(s => s.TimeRecorded ? s.Time : double.MaxValue).ToArray();
+                Array.Copy(sorted, _sportsmen, sorted.Length);
             }
 
             public static Group Merge(Group group1, Group group2)

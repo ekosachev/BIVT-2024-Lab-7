@@ -75,49 +75,18 @@ namespace Lab_7
 
             public static void SetPlaces(Participant[] participants)
             {
-                if (participants == null)
-                    return;
-                if (participants.Length == 0)
-                    return;
-                if (participants.Any(p => p._marks == null || p._places == null))
-                    return;
-                if (participants.Any(p => !p._scoresFilled))
-                    return;
-
-                double[,] marksMatrix = new double[participants.Length, 7];
-
-                for (int participant = 0; participant < participants.Length; participant++)
+                if (participants == null) return;
+                for (int judge = 0; judge < 7; judge++)
                 {
-                    for (int judge = 0; judge < 7; judge++)
+                    Participant[] markDescending = participants.OrderByDescending(p => p.Marks != null ? p.Marks[judge] : 0).ToArray();
+                    Array.Copy(markDescending, participants, markDescending.Length);
+                    for (int part = 0; part < participants.Length; part++)
                     {
-                        marksMatrix[participant, judge] = participants[participant]._marks[judge];
+                        if (participants[part].Places == null) continue;
+                        if (judge >= participants[part].Places.Length) continue;
+                        participants[part].Places[judge] = part + 1;
                     }
                 }
-
-                for (int participant = 0; participant < participants.Length; participant++)
-                {
-                    for (int judge = 0; judge < 7; judge++)
-                    {
-                        int place = 1;
-                        for (
-                            int otherParticipant = 0;
-                            otherParticipant < participants.Length;
-                            otherParticipant++
-                        )
-                        {
-                            if (
-                                marksMatrix[otherParticipant, judge]
-                                > marksMatrix[participant, judge]
-                            )
-                                place++;
-                        }
-                        participants[participant]._places[judge] = place;
-                    }
-                    participants[participant]._placesFilled = true;
-                }
-
-                Participant[] sortedArray = participants.OrderBy(p => p._places.Last()).ToArray();
-                Array.Copy(sortedArray, participants, sortedArray.Length);
             }
 
             public static void Sort(Participant[] array)
