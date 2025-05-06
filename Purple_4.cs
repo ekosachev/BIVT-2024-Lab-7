@@ -209,28 +209,24 @@ namespace Lab_7
                 Split(out Sportsman[] men, out Sportsman[] women);
                 Sportsman[] newArray = new Sportsman[_sportsmen.Length];
 
-                int i1 = 0;
-                int i2 = 0;
+                int iMen = 0;
+                int iWomen = 0;
                 int iTotal = 0;
 
-                while (iTotal < newArray.Length && i1 < men.Length && i2 < women.Length)
+                while (iMen < men.Length || iWomen < women.Length)
                 {
-                    if (iTotal % 2 == 0)
+                    if ((iTotal % 2 == 0 || iWomen >= women.Length) && iMen < men.Length)
                     {
-                        newArray[iTotal++] = men[i1++];
+                        newArray[iTotal++] = men[iMen++];
                     }
-                    else
+                    else if (iWomen < women.Length)
                     {
-                        newArray[iTotal++] = women[i2++];
+                        newArray[iTotal++] = women[iWomen++];
                     }
                 }
 
-                while (i1 < men.Length)
-                    newArray[iTotal++] = men[i1++];
-                while (i2 < women.Length)
-                    newArray[iTotal++] = women[i2++];
 
-                Array.Copy(newArray, this._sportsmen, newArray.Length);
+                Array.Copy(newArray, this.Sportsmen, newArray.Length);
             }
         }
     }

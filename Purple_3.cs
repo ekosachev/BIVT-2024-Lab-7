@@ -84,7 +84,7 @@ namespace Lab_7
                     {
                         if (participants[part].Places == null) continue;
                         if (judge >= participants[part].Places.Length) continue;
-                        participants[part].Places[judge] = part + 1;
+                        participants[part]._places[judge] = part + 1;
                     }
                 }
             }
