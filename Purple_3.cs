@@ -98,12 +98,9 @@ namespace Lab_7
                 if (array.Any(p => !p._placesFilled))
                     return;
 
-                if (array.Any(p => p.Places == null) || array.Any(p => p.Marks == null))
-                    return;
-
                 Participant[] sortedArray = array
                     .OrderBy(p => p.Score)
-                    .ThenBy(p => p.Places.Min())
+                    .ThenBy(p => p.Places != null ? p.Places.Min() : int.MaxValue)
                     .ThenByDescending(p => p.TotalMarks)
                     .ToArray();
                 Array.Copy(sortedArray, array, sortedArray.Length);

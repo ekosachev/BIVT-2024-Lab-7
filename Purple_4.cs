@@ -46,7 +46,7 @@ namespace Lab_7
                 if (sportsmen.Any(s => !s.TimeRecorded))
                     return;
                 Sportsman[] sorted = sportsmen.OrderBy(s => s.Time).ToArray();
-                sportsmen = sorted;
+                Array.Copy(sorted, sportsmen, sorted.Length);
             }
         }
 
