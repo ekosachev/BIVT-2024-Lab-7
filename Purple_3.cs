@@ -38,7 +38,7 @@ namespace Lab_7
                 }
             }
 
-            public int Score => this.Places != null ? this.Places.Sum() : 0;
+            public int Score => this.Places != null ? this.Places.Sum() : int.MaxValue;
             private double TotalMarks => this.Marks != null ? this.Marks.Sum() : 0;
             private int BestPlace => this.Places != null ? this.Places.Min() : int.MaxValue;
 
@@ -100,7 +100,7 @@ namespace Lab_7
 
                 Participant[] sortedArray = array
                     .OrderBy(p => p.Score)
-                    .ThenBy(p => p.Places != null ? p.Places.Min() : int.MaxValue)
+                    .ThenBy(p => p.BestPlace)
                     .ThenByDescending(p => p.TotalMarks)
                     .ToArray();
                 Array.Copy(sortedArray, array, sortedArray.Length);
