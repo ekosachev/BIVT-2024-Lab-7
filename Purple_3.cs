@@ -38,9 +38,9 @@ namespace Lab_7
                 }
             }
 
-            public int Score => this.Places != null ? this.Places.Sum() : int.MaxValue;
+            public int Score => this.Places != null ? this.Places.Sum() : 0;
             private double TotalMarks => this.Marks != null ? this.Marks.Sum() : 0;
-            private int BestPlace => this.Places != null ? this.Places.Min() : int.MaxValue;
+            private int BestPlace => this.Places != null ? this.Places.Min() : 0;
 
             public void Print()
             {
@@ -94,8 +94,6 @@ namespace Lab_7
                 if (array == null)
                     return;
                 if (array.Length < 2)
-                    return;
-                if (array.Any(p => !p._placesFilled))
                     return;
 
                 Participant[] sortedArray = array
